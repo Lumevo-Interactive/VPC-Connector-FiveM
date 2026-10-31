@@ -1,6 +1,6 @@
 fx_version 'cerulean'
 game 'gta5'
-author 'WGC Systems UG'
+author 'Lumevo Interactive UG (hb)'
 description 'Resource for integrating Copnet etc. into FiveM'
 version '3.2.3'
 
