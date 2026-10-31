@@ -1,0 +1,36 @@
+name: Lua checks
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  syntax:
+    name: Lua 5.4 syntax
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Install Lua 5.4
+        run: sudo apt-get update && sudo apt-get install --yes lua5.4
+
+      - name: Check Lua syntax
+        shell: bash
+        run: |
+          failed=0
+
+          while IFS= read -r -d '' file; do
+            echo "Checking ${file}"
+            if ! luac5.4 -p "${file}"; then
+              failed=1
+            fi
+          done < <(find . -type f -name '*.lua' -not -path './.git/*' -print0)
+
+          exit "${failed}"
