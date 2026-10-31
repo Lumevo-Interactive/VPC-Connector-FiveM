@@ -1,5 +1,9 @@
 # VPC Connector FiveM
 
+[Deutsch](#deutsch) | [English](#english)
+
+## Deutsch
+
 Mit dieser FiveM-Ressource können die VPC-Systeme direkt als Tablet im Spiel
 geöffnet und mit dem Server verbunden werden.
 
@@ -12,7 +16,7 @@ Unterstützt werden:
 - normale Zonen und eine optionale qb-target-Integration
 - optionale Livemap- und Fahrzeug-Synchronisation
 
-## Installation
+### Installation
 
 1. Die Ressource in den FiveM-Ressourcenordner kopieren.
 2. In shared/config.lua das Framework und die gewünschten Funktionen einstellen.
@@ -26,7 +30,7 @@ Unterstützt werden:
 Standardmäßig wird oxmysql verwendet. Hinweise zur Umstellung auf mysql-async
 stehen direkt in der fxmanifest.lua.
 
-## Konfiguration
+### Konfiguration
 
 Die vollständigen Erklärungen und Beispiele befinden sich in:
 
@@ -39,7 +43,7 @@ Für eine englische Installation müssen die deutschen Dateien durch die
 englischen Varianten ersetzt und anschließend in config.lua beziehungsweise
 target.lua umbenannt werden.
 
-## LifeNet
+### LifeNet
 
 LifeNet ist nicht an einen Job gebunden. Es kann über einen eigenen Befehl,
 ein eigenes Item oder einen konfigurierten PC-Punkt geöffnet werden.
@@ -48,7 +52,63 @@ Optional kann ein fünfstelliger Netzwerktoken hinterlegt werden. Ohne
 hinterlegten Token öffnet sich die LifeNet-Anmeldeseite zur manuellen Eingabe.
 Die Einstellungen und Beispiele stehen in den Config- und Target-Dateien.
 
-## Datenbankdateien
+### Datenbankdateien
 
 - vpc-ls.sql wird für die optionale Livemap-Integration benötigt.
 - vpc-owned_vehicle.sql wird für die optionale Fahrzeug-Synchronisation benötigt.
+
+## English
+
+This FiveM resource integrates the VPC systems directly into the game as a
+tablet and connects them to the server.
+
+Supported features:
+
+- CopNet, MedicNet, CarNet and FireNet with job assignments
+- LifeNet without a job requirement
+- ESX, ESX 1.8.5 or newer and QBCore
+- optional items and commands for opening the tablet
+- standard zones and optional qb-target integration
+- optional live map and vehicle synchronization
+
+### Installation
+
+1. Copy the resource into your FiveM resources directory.
+2. Configure your framework and the required features in shared/config.lua.
+3. Configure interaction points in shared/target.lua when using qb-target.
+4. Add the required items to your inventory system.
+5. Import the appropriate SQL file for each enabled database feature.
+6. Start the resource in your server.cfg.
+
+    ensure VPC-Connector-FiveM
+
+oxmysql is enabled by default. Instructions for switching to mysql-async are
+included in fxmanifest.lua.
+
+### Configuration
+
+Configuration details and examples are available in:
+
+- shared/config.lua for the German configuration
+- shared/target.lua for German qb-target examples
+- shared/ENGLISH_config.lua for the English configuration
+- shared/ENGLISH_target.lua for English qb-target examples
+
+For an English installation, replace the German files with the English
+versions. Rename ENGLISH_config.lua to config.lua and ENGLISH_target.lua to
+target.lua afterwards.
+
+### LifeNet
+
+LifeNet does not require a job. It can be opened with its own command, a
+dedicated item or a configured PC interaction point.
+
+An optional five-character network token can be configured. Without a
+configured token, LifeNet opens the login page so the token can be entered
+manually. All settings and examples are documented in the configuration and
+target files.
+
+### Database files
+
+- vpc-ls.sql is required for the optional live map integration.
+- vpc-owned_vehicle.sql is required for the optional vehicle synchronization.
