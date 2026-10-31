@@ -187,7 +187,7 @@ if Config.OpenFireNetCommand ~= nil then
 	end, false)
 end
 
--- LifeNet is available to every job through its own command/event.
+-- LifeNet uses its own command/event without evaluating the player's job.
 if Config.OpenLifeNetCommand ~= nil then
 	RegisterCommand(Config.OpenLifeNetCommand, function()
 		TriggerEvent('vpc-tab:openlifenet')

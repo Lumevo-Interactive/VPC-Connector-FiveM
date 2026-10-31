@@ -187,15 +187,32 @@ Config.OpenMedicNetCommand = 'medicnet'
 Config.OpenFireNetCommand = 'firenet'
 
 
--- LifeNet ist für alle Jobs verfügbar. Mit nil wird nur der Befehl deaktiviert.
+--[[
+    LifeNet ist nicht an einen Job gebunden.
+
+    Mit diesem Befehl können Spieler LifeNet öffnen.
+    nil deaktiviert den Befehl.
+]]
 Config.OpenLifeNetCommand = 'lifenet'
--- Optionaler Netzwerktoken: genau 5 Zeichen als String, z. B. 'ABCDE'.
--- nil oder '' öffnet https://lifenet.li zur manuellen Eingabe.
--- Ungültige Werte erzeugen eine Konsolenmeldung und öffnen die Startseite.
+
+--[[
+    Hier kann der 5-stellige Netzwerktoken eingetragen werden.
+    Beispiel: Config.LifeNetToken = 'ABCDE'
+
+    Mit nil oder '' wird https://lifenet.li geöffnet und der Token kann
+    anschließend von Hand eingegeben werden.
+]]
 Config.LifeNetToken = nil
--- Eigenes benutzbares Item für LifeNet, unabhängig vom Job-Tablet.
--- Auch /lifenet benötigt dieses Item. nil deaktiviert die Itempflicht und Registrierung.
--- Muss im Inventarsystem existieren und sich von Config.UseableItem unterscheiden.
+
+--[[
+    Eigenes Item zum Öffnen von LifeNet.
+    Das Item muss zusätzlich in eurem Inventarsystem angelegt werden.
+    Es darf nicht gleichzeitig in Config.UseableItem eingetragen sein.
+    Das Item wird bei der Benutzung nicht verbraucht.
+
+    Wenn ein Item eingetragen ist, wird es auch für den LifeNet-Befehl benötigt.
+    Mit nil kann LifeNet ohne Item geöffnet werden.
+]]
 Config.LifeNetItem = 'lifenet_tablet'
 
 
@@ -261,6 +278,17 @@ Config.Zones = {
         NeedJob = 'police',
         Radius = 4
     },
+
+    --[[ Beispiel für einen jobunabhängigen LifeNet-PC
+    {
+        Coords = vector3(427.29, -597.218, 43.2821),
+        Info = 'Drücke E um LifeNet zu nutzen.',
+        Marker = { type = 1, x = 2.0, y = 2.0, z = 0.5, r = 102, g = 0, b = 102, a = 100, rotate = false },
+        VPCNET = 'life',
+        Type = 'pc',
+        Radius = 4
+    },
+    ]]
 
    --[[ Besp. Für einen CarNet - Shop 
     {

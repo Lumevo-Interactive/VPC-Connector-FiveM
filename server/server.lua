@@ -305,7 +305,7 @@ elseif Config.Framework == "QB" then
 end
 
 
--- A dedicated LifeNet item always opens LifeNet, regardless of the player's job.
+-- LifeNet uses a dedicated item without evaluating the player's job.
 local function hasLifeNetItem(source)
   if Config.LifeNetItem == nil then return true end
   if Config.Framework == 'QB' then

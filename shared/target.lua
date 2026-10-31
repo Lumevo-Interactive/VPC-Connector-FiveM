@@ -11,7 +11,7 @@ if Config.ActivateQbTarget then
                     event = "vpc-tab:opentab:target",
                     icon = "fas fa-desktop", --> Hier kannst du dir ein Icon von fontawesome aussuchen.
                     label = "MedicNet PC", --> Wie soll der Punkt heißen?
-                    net = "medic",  --> medic, cop, car oder fire (Für das jeweilige Net setzen)
+                    net = "medic",  --> medic, cop, car, fire oder life (Für das jeweilige Net setzen)
                     showType = "pc", --> bewerben, stgb, shop oder pc
                     pid = nil,  --> PID nur dann auf nil stellen, wenn es sich um einen PC handelt. Es handelt sich um die PublicID des PC's
                 },
@@ -19,6 +19,27 @@ if Config.ActivateQbTarget then
             distance = 3.0 --> Welcher Radius soll möglich sein?
         })
 
+        --[[ Beispiel für einen jobunabhängigen LifeNet-PC
+
+        exports['qb-target']:AddCircleZone("lifenetpc1", vector3(-677.08, 325.47, 83.08), 0.4, {
+            name = "lifenetpc1",
+            debugPoly = false,
+          }, {
+            options = {
+                {
+                    type = "client",
+                    event = "vpc-tab:opentab:target",
+                    icon = "fas fa-desktop",
+                    label = "LifeNet PC",
+                    net = "life",
+                    showType = "pc",
+                    pid = nil,
+                },
+            },
+            distance = 3.0
+        })
+
+        --]]
 
         --[[ Beispiel für die Integration von einem Bewerbungspunkt für QB-Target
 
