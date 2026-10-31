@@ -43,14 +43,18 @@ Für eine englische Installation müssen die deutschen Dateien durch die
 englischen Varianten ersetzt und anschließend in config.lua beziehungsweise
 target.lua umbenannt werden.
 
-### LifeNet
+### Systeme
 
-LifeNet ist nicht an einen Job gebunden. Es kann über einen eigenen Befehl,
-ein eigenes Item oder einen konfigurierten PC-Punkt geöffnet werden.
+| System | Verwendung |
+| --- | --- |
+| CopNet | Wird den in Config.CopNetJob eingetragenen Jobs zugeordnet. |
+| MedicNet | Wird den in Config.MedicNetJob eingetragenen Jobs zugeordnet. |
+| CarNet | Wird den in Config.CarNetJob eingetragenen Jobs zugeordnet. |
+| FireNet | Wird den in Config.FireNetJob eingetragenen Jobs zugeordnet. |
+| LifeNet | Wird über einen eigenen Befehl, ein eigenes Item oder einen PC-Punkt geöffnet und benötigt keine Jobzuordnung. |
 
-Optional kann ein fünfstelliger Netzwerktoken hinterlegt werden. Ohne
-hinterlegten Token öffnet sich die LifeNet-Anmeldeseite zur manuellen Eingabe.
-Die Einstellungen und Beispiele stehen in den Config- und Target-Dateien.
+Die Befehle, Items, Jobs und optionalen Funktionen werden vollständig in den
+Config- und Target-Dateien eingerichtet.
 
 ### Datenbankdateien
 
@@ -98,15 +102,18 @@ For an English installation, replace the German files with the English
 versions. Rename ENGLISH_config.lua to config.lua and ENGLISH_target.lua to
 target.lua afterwards.
 
-### LifeNet
+### Systems
 
-LifeNet does not require a job. It can be opened with its own command, a
-dedicated item or a configured PC interaction point.
+| System | Usage |
+| --- | --- |
+| CopNet | Assigned to the jobs configured in Config.CopNetJob. |
+| MedicNet | Assigned to the jobs configured in Config.MedicNetJob. |
+| CarNet | Assigned to the jobs configured in Config.CarNetJob. |
+| FireNet | Assigned to the jobs configured in Config.FireNetJob. |
+| LifeNet | Opened with its own command, item or PC interaction point and does not require a job assignment. |
 
-An optional five-character network token can be configured. Without a
-configured token, LifeNet opens the login page so the token can be entered
-manually. All settings and examples are documented in the configuration and
-target files.
+Commands, items, jobs and optional features are configured in the configuration
+and target files.
 
 ### Database files
 
