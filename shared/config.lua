@@ -188,6 +188,35 @@ Config.OpenFireNetCommand = 'firenet'
 
 
 --[[
+    LifeNet ist nicht an einen Job gebunden.
+
+    Mit diesem Befehl können Spieler LifeNet öffnen.
+    nil deaktiviert den Befehl.
+]]
+Config.OpenLifeNetCommand = 'lifenet'
+
+--[[
+    Hier kann der 5-stellige Netzwerktoken eingetragen werden.
+    Beispiel: Config.LifeNetToken = 'ABCDE'
+
+    Mit nil oder '' wird https://lifenet.li geöffnet und der Token kann
+    anschließend von Hand eingegeben werden.
+]]
+Config.LifeNetToken = nil
+
+--[[
+    Eigenes Item zum Öffnen von LifeNet.
+    Das Item muss zusätzlich in eurem Inventarsystem angelegt werden.
+    Es darf nicht gleichzeitig in Config.UseableItem eingetragen sein.
+    Das Item wird bei der Benutzung nicht verbraucht.
+
+    Wenn ein Item eingetragen ist, wird es auch für den LifeNet-Befehl benötigt.
+    Mit nil kann LifeNet ohne Item geöffnet werden.
+]]
+Config.LifeNetItem = 'lifenet_tablet'
+
+
+--[[
     Zum kopieren der aktuellen Coords. Näheres im Wiki
 ]]
 Config.CopyCoordsCommand = 'vpccoords'
@@ -250,6 +279,17 @@ Config.Zones = {
         Radius = 4
     },
 
+    --[[ Beispiel für einen jobunabhängigen LifeNet-PC
+    {
+        Coords = vector3(427.29, -597.218, 43.2821),
+        Info = 'Drücke E um LifeNet zu nutzen.',
+        Marker = { type = 1, x = 2.0, y = 2.0, z = 0.5, r = 102, g = 0, b = 102, a = 100, rotate = false },
+        VPCNET = 'life',
+        Type = 'pc',
+        Radius = 4
+    },
+    ]]
+
    --[[ Besp. Für einen CarNet - Shop 
     {
         Coords = vector3(312.9, -1447, 29.69),
@@ -293,3 +333,4 @@ Config.Zones = {
 
 
 -- 45617374657265676720676566756e64656e203b29204d616368652065696e205469636b6574206d69742064656d20666f6c67656e64656e20566964656f2061756620756e64206475206b72696567737420333074616765205072656d69756d20756d736f6e73742e202846fc72206469652065727374656e203130206469652065732066696e64656e292068747470733a2f2f7777772e796f75747562652e636f6d2f77617463683f763d79364e5364474c38637a77
+

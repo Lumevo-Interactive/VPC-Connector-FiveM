@@ -11,7 +11,7 @@ if Config.ActivateQbTarget then
                     event = "vpc-tab:opentab:target",
                     icon = "fas fa-desktop", --> Here you can choose an icon from fontawesome.
                     label = "MedicNet PC", --> What should the point be called?
-                    net = "medic",  --> medic, cop, car or fire (Fset for the respective net)
+                    net = "medic",  --> medic, cop, car, fire or life (Set for the respective net)
                     showType = "pc", --> bewerben (means apply), shop, stgb (means Law) or pc
                     pid = nil,  --> Set PID to nil only if it is a PC. pid is the PublicID of the PC
                 },
@@ -19,6 +19,27 @@ if Config.ActivateQbTarget then
             distance = 3.0 --> Which radius should be possible?
         })
 
+        --[[ Example of a job-independent LifeNet PC
+
+        exports['qb-target']:AddCircleZone("lifenetpc1", vector3(-677.08, 325.47, 83.08), 0.4, {
+            name = "lifenetpc1",
+            debugPoly = false,
+          }, {
+            options = {
+                {
+                    type = "client",
+                    event = "vpc-tab:opentab:target",
+                    icon = "fas fa-desktop",
+                    label = "LifeNet PC",
+                    net = "life",
+                    showType = "pc",
+                    pid = nil,
+                },
+            },
+            distance = 3.0
+        })
+
+        --]]
 
         --[[ Example of integration of one application point for QB target
 

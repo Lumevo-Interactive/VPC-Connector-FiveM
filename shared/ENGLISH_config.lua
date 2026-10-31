@@ -193,6 +193,35 @@ Config.OpenFireNetCommand = 'firenet'
 
 
 --[[
+    LifeNet is not linked to a job.
+
+    Players can use this command to open LifeNet.
+    Set it to nil to disable the command.
+]]
+Config.OpenLifeNetCommand = 'lifenet'
+
+--[[
+    Enter the 5-character network token here.
+    Example: Config.LifeNetToken = 'ABCDE'
+
+    Set it to nil or '' to open https://lifenet.li and let players
+    enter the token manually.
+]]
+Config.LifeNetToken = nil
+
+--[[
+    Separate item for opening LifeNet.
+    The item must also be added to your inventory system.
+    Do not add the same item to Config.UseableItem.
+    The item is not consumed when used.
+
+    When an item is configured, it is also required for the LifeNet command.
+    Set it to nil to allow LifeNet to be opened without an item.
+]]
+Config.LifeNetItem = 'lifenet_tablet'
+
+
+--[[
     To copy the current coords. Nutrients in the wiki
 ]]
 Config.CopyCoordsCommand = 'vpccoords'
@@ -255,6 +284,17 @@ Config.Zones = {
         Radius = 4
     },
 
+    --[[ Example of a job-independent LifeNet PC
+    {
+        Coords = vector3(427.29, -597.218, 43.2821),
+        Info = 'Press E to use LifeNet.',
+        Marker = { type = 1, x = 2.0, y = 2.0, z = 0.5, r = 102, g = 0, b = 102, a = 100, rotate = false },
+        VPCNET = 'life',
+        Type = 'pc',
+        Radius = 4
+    },
+    ]]
+
    --[[ For a CarNet - Shop 
     {
         Coords = vector3(312.9, -1447, 29.69),
@@ -301,3 +341,4 @@ Config.Zones = {
 
 
 -- 45617374657265676720676566756e64656e203b292068747470733a2f2f7777772e796f75747562652e636f6d2f77617463683f763d79364e5364474c38637a77
+

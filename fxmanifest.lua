@@ -50,10 +50,10 @@ escrow_ignore {
   'shared/config.lua',
   'vpc-ls.sql',
   'vpc-owned_vehicle.sql',
-  'shared/ENGLISCH_config.lua',
-  'readme_for_englisch_config.md',
+  'shared/ENGLISH_config.lua',
   'client/cl_utils.lua',
   'server/sv_utlis.lua',
   'shared/target.lua',
-  'shared/ENGLISCH_target.lua',
+  'shared/ENGLISH_target.lua',
 }
+
