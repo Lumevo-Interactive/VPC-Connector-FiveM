@@ -2,7 +2,7 @@ fx_version 'cerulean'
 game 'gta5'
 author 'WGC Systems UG'
 description 'Resource for integrating Copnet etc. into FiveM'
-version '3.2.3-Stabel'
+version '3.2.3'
 
 
 client_scripts {
