@@ -187,6 +187,18 @@ if Config.OpenFireNetCommand ~= nil then
 	end, false)
 end
 
+-- LifeNet is available to every job through its own command/event.
+if Config.OpenLifeNetCommand ~= nil then
+	RegisterCommand(Config.OpenLifeNetCommand, function()
+		TriggerEvent('vpc-tab:openlifenet')
+	end, false)
+end
+
+RegisterNetEvent('vpc-tab:openlifenet')
+AddEventHandler('vpc-tab:openlifenet', function()
+	TriggerEvent('vpc-tab:lookvehicle', 'life')
+end)
+
 if Config.CopyCoordsCommand ~= nil then
 	RegisterCommand(Config.CopyCoordsCommand, function(source, args)
 		local playerPed = PlayerPedId()
@@ -245,7 +257,7 @@ Citizen.CreateThread(function()
 		if tabAktive == false then
 			for k,v in ipairs(Config.Zones) do
 				if v.Type == "pc" then
-					if pJob == v.NeedJob then
+					if v.VPCNET == "life" or pJob == v.NeedJob then
 						
 						local playerPed = PlayerPedId()
 						local playerCoords = GetEntityCoords(playerPed)
@@ -334,6 +346,26 @@ end)
 
 --Function that checks if the Item (choosed in Config) is in the Inventory
 function showItem(NET)
+	-- LifeNet has its own inventory item, independent of the job tablet.
+	if NET == 'life' then
+		if Config.LifeNetItem == nil then
+			showTAB(NET)
+		elseif Config.Framework == 'QB' then
+			QBCore.Functions.TriggerCallback('vpc-tab:getLifeNetItem', function(hasItem)
+				if hasItem then showTAB(NET) end
+			end)
+		elseif Config.Framework == 'ESX' or Config.Framework == 'ESX185' then
+			local data = ESX.GetPlayerData()
+			for _, item in pairs(data.inventory or {}) do
+				if item.name == Config.LifeNetItem and item.count >= 1 then
+					showTAB(NET)
+					break
+				end
+			end
+		end
+		return
+	end
+
 	if Config.Framework == "ESX" or Config.Framework == "ESX185" then
 		if Config.ItemTab ~= nil then
 			PlayerData = ESX.GetPlayerData()
@@ -372,6 +404,24 @@ end
 
 
 --Function to open the Tab finaly
+local function getLifeNetUrl()
+	local token = Config.LifeNetToken
+	if token == nil or token == '' then
+		return 'https://lifenet.li'
+	end
+
+	if type(token) ~= 'string' or utf8.len(token) ~= 5 then
+		print('[VPC] Config.LifeNetToken must be a string with exactly 5 characters. Opening LifeNet without a token.')
+		return 'https://lifenet.li'
+	end
+
+	-- Encode the query value so reserved characters cannot change the URL.
+	local encodedToken = token:gsub('([^%w%-._~])', function(character)
+		return string.format('%%%02X', string.byte(character))
+	end)
+	return 'https://lifenet.li/login?id=' .. encodedToken
+end
+
 Citizen.CreateThread(function()
 
 	function showTAB(NET, PID, BSite)
@@ -396,6 +446,8 @@ Citizen.CreateThread(function()
 				Netgiver = 'https://pc.carnet.li/'
 			elseif NET == "fire" then
 				Netgiver = 'https://pc.firenet.li/'
+			elseif NET == "life" then
+				Netgiver = getLifeNetUrl()
 			elseif NET == "shop" then
 				Netgiver = 'https://pc.carnet.li/shop.php?sp='..PID
 			elseif NET == "bewerben" then

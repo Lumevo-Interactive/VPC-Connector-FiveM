@@ -305,6 +305,47 @@ elseif Config.Framework == "QB" then
 end
 
 
+-- A dedicated LifeNet item always opens LifeNet, regardless of the player's job.
+local function hasLifeNetItem(source)
+  if Config.LifeNetItem == nil then return true end
+  if Config.Framework == 'QB' then
+    local player = QBCore.Functions.GetPlayer(source)
+    local item = player and player.Functions.GetItemByName(Config.LifeNetItem)
+    return item ~= nil and (item.amount or 0) > 0
+  else
+    local player = ESX.GetPlayerFromId(source)
+    local item = player and player.getInventoryItem(Config.LifeNetItem)
+    return item ~= nil and (item.count or 0) > 0
+  end
+end
+
+if Config.Framework == 'QB' then
+  QBCore.Functions.CreateCallback('vpc-tab:getLifeNetItem', function(source, cb)
+    cb(hasLifeNetItem(source))
+  end)
+end
+
+if Config.LifeNetItem ~= nil then
+  local duplicate = false
+  for _, item in pairs(Config.UseableItem or {}) do
+    if item == Config.LifeNetItem then duplicate = true end
+  end
+  if duplicate then
+    print('[VPC] Config.LifeNetItem must differ from Config.UseableItem. LifeNet item registration skipped.')
+  else
+    local function openLifeNet(source)
+      if hasLifeNetItem(source) then
+        TriggerClientEvent('vpc-tab:openlifenet', source)
+      end
+    end
+    if Config.Framework == 'ESX' or Config.Framework == 'ESX185' then
+      ESX.RegisterUsableItem(Config.LifeNetItem, openLifeNet)
+    elseif Config.Framework == 'QB' then
+      QBCore.Functions.CreateUseableItem(Config.LifeNetItem, openLifeNet)
+    end
+  end
+end
+
 if Config.LivemapAktive then
   if Config.IDMap ~= nil then
 
@@ -591,4 +632,5 @@ if Config.StartUpMSG then
   print("  Starting up in Version " .. version)
   print("----------------------------------------------------------------------------------------")
 end
+
 

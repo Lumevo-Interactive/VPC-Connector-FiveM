@@ -192,6 +192,18 @@ Config.OpenMedicNetCommand = 'medicnet'
 Config.OpenFireNetCommand = 'firenet'
 
 
+-- LifeNet is available to all jobs. Set nil to disable only the command.
+Config.OpenLifeNetCommand = 'lifenet'
+-- Optional network token: exactly 5 characters as a string, e.g. 'ABCDE'.
+-- nil or '' opens https://lifenet.li for manual entry.
+-- Invalid values log a warning and open the home page.
+Config.LifeNetToken = nil
+-- Separate usable LifeNet item, independent of the job tablet.
+-- /lifenet also requires this item. nil disables the item requirement and registration.
+-- Must exist in your inventory system and differ from Config.UseableItem.
+Config.LifeNetItem = 'lifenet_tablet'
+
+
 --[[
     To copy the current coords. Nutrients in the wiki
 ]]
@@ -301,3 +313,4 @@ Config.Zones = {
 
 
 -- 45617374657265676720676566756e64656e203b292068747470733a2f2f7777772e796f75747562652e636f6d2f77617463683f763d79364e5364474c38637a77
+
